@@ -1,0 +1,30 @@
+<mat-card class="plan-card">
+  <mat-card-header>
+    <mat-card-title>{{ plan().title }}</mat-card-title>
+    <mat-card-subtitle>{{ heading() }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="focus">{{ plan().subtitle }}</p>
+
+    @if (plan().restDay) {
+      <p class="rest-hint">Kein schweres Training geplant – Erholung zählt auch.</p>
+    } @else {
+      <mat-chip-set class="chip-row" aria-label="Fokus">
+        <mat-chip highlighted>Geplant</mat-chip>
+        <mat-chip>{{ plan().exercises.length }} Übungen</mat-chip>
+      </mat-chip-set>
+
+      <mat-divider />
+
+      <mat-list class="exercise-list" role="list">
+        @for (exercise of plan().exercises; track exercise.name) {
+          <mat-list-item role="listitem">
+            <span matListItemTitle>{{ exercise.name }}</span>
+            <span matListItemLine>{{ exercise.detail }}</span>
+          </mat-list-item>
+        }
+      </mat-list>
+    }
+  </mat-card-content>
+</mat-card>

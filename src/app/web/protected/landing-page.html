@@ -1,0 +1,48 @@
+<section class="dash">
+  <header class="top">
+    <p class="brand">FitnessApp</p>
+    <button type="button" class="ghost" (click)="logout()">Abmelden</button>
+  </header>
+
+  <div class="hero">
+    <p class="welcome">Willkommen, {{ userName() }}!</p>
+    <p class="kicker">Dein Plan</p>
+    <h1>{{ todayPlan().title }} – {{ todayPlan().subtitle }}</h1>
+    <p class="lede">Wähle einen Tag im Kalender und sieh deine geplanten Einheiten.</p>
+  </div>
+
+  <div class="stats">
+    <article>
+      <span>Wochenziel</span>
+      <strong>{{ weekProgress().done }} / {{ weekProgress().planned }}</strong>
+      <p>Trainings diese Woche</p>
+    </article>
+    <article>
+      <span>Heute</span>
+      <strong>{{ todayPlan().restDay ? 'Erholung' : 'Training' }}</strong>
+      <p>{{ todayPlan().title }}</p>
+    </article>
+    <article>
+      <span>Ausgewählt</span>
+      <strong>{{ selectedDate() | date: 'dd.MM.' }}</strong>
+      <p>{{ planForDate(selectedDate()).title }}</p>
+    </article>
+  </div>
+
+  <div class="planner">
+    <mat-card class="panel calendar-panel">
+      <mat-card-header>
+        <mat-card-title>Kalender</mat-card-title>
+        <mat-card-subtitle>Grüner Strich = Trainingstag</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <app-training-calendar
+          [selected]="selectedDate()"
+          (selectedChange)="onDateChange($event)"
+        />
+      </mat-card-content>
+    </mat-card>
+
+    <app-fitness-plan [selectedDate]="selectedDate()" />
+  </div>
+</section>

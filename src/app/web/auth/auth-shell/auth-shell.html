@@ -1,0 +1,18 @@
+<section class="auth-page">
+  <div class="auth-panel auth-panel--tabs">
+    <p class="brand">FitnessApp</p>
+
+    <mat-tab-group
+      class="auth-tabs"
+      [selectedIndex]="selectedIndex()"
+      (selectedIndexChange)="onTabChange($event)"
+    >
+      <mat-tab label="Anmelden">
+        <app-login />
+      </mat-tab>
+      <mat-tab label="Registrieren">
+        <app-register />
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

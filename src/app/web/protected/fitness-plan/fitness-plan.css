@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.plan-card {
+  height: 100%;
+  background: rgba(16, 24, 40, 0.85);
+  border: 1px solid rgba(232, 237, 242, 0.1);
+  color: #e8edf2;
+}
+
+:host ::ng-deep .plan-card .mat-mdc-card-title {
+  color: #e8edf2;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+:host ::ng-deep .plan-card .mat-mdc-card-subtitle {
+  color: #9aa7b8;
+}
+
+.focus {
+  margin: 0 0 1rem;
+  color: #c5d0dc;
+  line-height: 1.45;
+}
+
+.rest-hint {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  background: rgba(62, 230, 163, 0.08);
+  color: #9aa7b8;
+  font-size: 0.95rem;
+}
+
+.chip-row {
+  margin-bottom: 1rem;
+}
+
+:host ::ng-deep .chip-row .mat-mdc-chip.mat-mdc-chip-highlighted {
+  --mdc-chip-elevated-container-color: rgba(62, 230, 163, 0.2);
+  --mdc-chip-label-text-color: #3ee6a3;
+}
+
+.exercise-list {
+  padding-top: 0.5rem;
+}
+
+:host ::ng-deep .exercise-list .mat-mdc-list-item {
+  --mdc-list-list-item-label-text-color: #e8edf2;
+  --mdc-list-list-item-supporting-text-color: #9aa7b8;
+}
+
+:host ::ng-deep .plan-card .mat-divider {
+  border-top-color: rgba(232, 237, 242, 0.12);
+  margin: 0.25rem 0 0.5rem;
+}

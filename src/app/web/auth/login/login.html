@@ -1,0 +1,69 @@
+<h1>Willkommen zurück</h1>
+<p class="lede">Melde dich an, um dein Training fortzusetzen.</p>
+
+<form novalidate (submit)="onSubmit($event)">
+  @if (loginError()) {
+    <p class="error" role="alert">{{ loginError() }}</p>
+  }
+
+  <label>
+    E-Mail
+    <input
+      type="email"
+      autocomplete="email"
+      [formField]="loginForm.email"
+      placeholder="name@mail.com"
+    />
+  </label>
+
+  <label class="password-field">
+    Passwort
+    <input
+      [type]="showPassword() ? 'text' : 'password'"
+      autocomplete="current-password"
+      [formField]="loginForm.password"
+      placeholder="••••••••"
+    />
+    <button
+      type="button"
+      class="toggle-password"
+      (click)="togglePassword()"
+      [attr.aria-label]="showPassword() ? 'Passwort verbergen' : 'Passwort anzeigen'"
+      [attr.aria-pressed]="showPassword()"
+    >
+      @if (showPassword()) {
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M3 3l18 18" />
+          <path d="M10.6 10.6a2 2 0 002.8 2.8" />
+          <path d="M9.9 5.2A10 10 0 0121 12a10 10 0 01-4.1 5.1" />
+          <path d="M6.1 6.1A10 10 0 003 12a10 10 0 0012.9 6.1" />
+        </svg>
+      } @else {
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      }
+    </button>
+  </label>
+
+  <button type="submit" [disabled]="submitting()">
+    {{ submitting() ? 'Anmelden …' : 'Anmelden' }}
+  </button>
+</form>
